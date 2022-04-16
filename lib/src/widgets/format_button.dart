@@ -31,6 +31,49 @@ class FormatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Container(
+      decoration: decoration,
+      height: 30,
+      padding: padding,
+      child: DropdownButton<CalendarFormat>(
+        underline: SizedBox(),
+        icon: Container(),
+        items: availableCalendarFormats
+            .map((description, value) {
+              return MapEntry(
+                  description,
+                  DropdownMenuItem<CalendarFormat>(
+                    value: description,
+                    child: Text(value),
+                  ));
+            })
+            .values
+            .toList(),
+        value: calendarFormat,
+        onChanged: (format) {
+          onTap(format!);
+          // if (newValue != null) {
+          //   setState(() {
+          //     _frequencyValue = newValue;
+          //   });
+          // }
+        },
+      ),
+    );
+
+    // return DropdownButton<CalendarFormat>(
+    //   items: availableCalendarFormats.map((CalendarFormat value) {
+    //     return DropdownMenuItem<CalendarFormat>(
+    //       value: value,
+    //       child: Text(value),
+    //     );
+    //   }).toList(),
+    //   value: calendarFormat.name,
+    //   onChanged: (_) {
+    //
+    //   },
+    // );
+
     final child = Container(
       decoration: decoration,
       padding: padding,
